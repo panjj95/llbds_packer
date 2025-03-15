@@ -37,10 +37,11 @@ jobs:
       run: |
         mkdir ll
         mv .\LICENSE .\ll\LL_Easier_LICENSE
-        Invoke-WebRequest -Uri https://github.com/futrime/lip/releases/latest/download/lip-cli-win-x64-en-US.msi -Outfile .\scripts\lip.msi
+        Invoke-WebRequest -Uri https://github.com/futrime/lip/releases/latest/download/lip-cli-win-x64.zip -Outfile .\scripts\lip.zip
         Invoke-WebRequest -Uri https://www.7-zip.org/a/7z2401-x64.exe -Outfile .\scripts\7z_installer.exe
-        .\scripts\lip.msi
-        .\scripts\7z_installer.exe        
+        unzip .\scripts\lip.zip -d .\scripts\
+        .\scripts\7z_installer.exe
+        "$env:GITHUB_WORKSPACE\scripts" | Out-File -FilePath $env:GITHUB_PATH -Append
 
     - name: 🧰 Install LeviLamina
       working-directory: ll
@@ -65,7 +66,7 @@ jobs:
       working-directory: ll
       if: github.event.inputs.SCRIPTS == 'true'
       run: |
-        powershell user_scripts.ps1
+        pwsh user_scripts.ps1
 
     - name: 📂 Remove BDS & Get BDS Version
       id: get_bds_core_version
