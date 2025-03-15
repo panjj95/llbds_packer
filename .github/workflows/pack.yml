@@ -46,15 +46,15 @@ jobs:
     - name: 🧰 Install LeviLamina
       working-directory: ll
       run: |
-        lip.exe install -y github.com/LiteLDev/LeviLamina@${{ github.event.inputs.LL_VER }}
+        lip.exe install github.com/LiteLDev/LeviLamina@${{ github.event.inputs.LL_VER }}
     
     - name: ⚙️ Install LSE
       working-directory: ll
       if: github.event.inputs.LSE == 'true'
       run: |
-        lip.exe install -y gitea.litebds.com/LiteLDev/legacy-script-engine-python
-        lip.exe install -y gitea.litebds.com/LiteLDev/legacy-script-engine-lua
-        lip.exe install -y gitea.litebds.com/LiteLDev/legacy-script-engine-quickjs
+        lip.exe install gitea.litebds.com/LiteLDev/legacy-script-engine-python
+        lip.exe install gitea.litebds.com/LiteLDev/legacy-script-engine-lua
+        lip.exe install gitea.litebds.com/LiteLDev/legacy-script-engine-quickjs
     
     - name: 🔧 Install Runtime
       working-directory: ll
