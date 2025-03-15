@@ -1,1 +1,1 @@
-lip install -y github.com/GroupMountain/GMLIB
+lip.exe install -y github.com/GroupMountain/GMLIB
